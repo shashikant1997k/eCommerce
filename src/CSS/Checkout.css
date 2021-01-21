@@ -1,0 +1,19 @@
+.checkoutProduct {
+  display: flex;
+  padding: 20px;
+  height: max-content;
+  flex-direction: column;
+}
+.cart__empty {
+  display: flex;
+  flex-direction: column;
+  background-color: white !important;
+  padding: 10px;
+  background: white;
+}
+.checkout__title {
+  margin-right: 10px;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+  background: white;
+}
