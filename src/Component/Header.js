@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import "../CSS/Header.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { auth, db } from "../firebase";
 import { Button } from "@material-ui/core";
 
 function Header() {
   const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   let user = state?.user;
-  const history = useHistory();
   const handleAuth = () => {
     auth.signOut();
-    history.push("/login");
+    dispatch({
+      type: "SET_USER",
+      user: null,
+    });
   };
 
   const [basket, setBasket] = useState([]);
@@ -34,8 +37,6 @@ function Header() {
 
     fetchData();
   }, [user?.uid]);
-
-  console.log(basket);
 
   return (
     <nav className="header">
